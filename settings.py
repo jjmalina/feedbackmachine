@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     'south',
     'django_admin_bootstrapped',
     'django.contrib.admin',
+    'tastypie',
     'app',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
