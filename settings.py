@@ -19,6 +19,7 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Jeremiah Malina', 'jmalina327@gmail.com'),
+    ('Misha Ponizil', 'misha.ponizil@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -107,6 +108,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'utils.middleware.static_url.StaticUrlMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
