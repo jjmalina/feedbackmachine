@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block assets %}
+<script type='text/javascript' src='{{ STATIC_URL }}/js/index.js'></script>
+{% endblock %}
+
+{% block content %}
+
+<header class='bar-title'>
+  <h1 class='title'>Ratchet</h1>
+</header>
+
+<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+<div class='content'>
+  <ul class='list'>
+    <li class='list-divider'>
+      Current Demo
+    </li>
+    <li>
+      <a href='demo' data-transition='slide-in'>
+        <strong>Jeremiah Malina</strong>
+        <span class='chevron'></span>
+      </a>
+    </li>
+    <li class='list-divider'>
+      All Demos
+    </li>
+    <li>
+      <a href='demo' data-transition='slide-in'>
+        <strong>Demo 1</strong>
+        <span class='chevron'></span>
+      </a>
+    </li>
+    <li>
+      <a href='demo' data-transition='slide-in'>
+        <strong>Demo 2</strong>
+        <span class='chevron'></span>
+      </a>
+    </li>
+    <li>
+      <a href='demo' data-transition='slide-in'>
+        <strong>Ratchet on Twitter</strong>
+        <span class='chevron'></span>
+      </a>
+    </li>
+  </ul>
+
+</div>
+
+{% endblock %}
