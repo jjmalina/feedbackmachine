@@ -15,13 +15,8 @@ function serialize_form($form) {
 function post_comment(demo_id, content) {
   $.ajax({
     type: 'POST',
-    url: '/api/v1/comments/?format=json',
-    data: JSON.stringify({
-      demo_id: demo_id,
-      content: content
-    }),
-    dataType: 'json',
-    contentType: 'application/json',
+    url: '/json/demos/' + demo_id + '/comments/?format=json',
+    data: { content: content },
     complete: function(resp) {
       console.log('complete', resp);
     }
@@ -43,8 +38,22 @@ function listen_create_comment() {
   $('#comment_submit').on('touchend', create_comment);
 }
 
+function poll_current_demo() {
+  setInterval(function() {
+    var event_id = bootstrap.event_id;
+    $.ajax({
+      url: '/json/events/' + event_id + '/current_demo/?format=json',
+      complete: function(resp) {
+        var data = JSON.parse(resp.responseText);
+        $('#current_demo').attr('href', '/demo/' + data.demo_id + '/');
+      }
+    });
+  }, 5000);
+}
+
 $(function() {
 
   listen_create_comment();
+  poll_current_demo();
 
 });
