@@ -8,6 +8,7 @@ class Event(models.Model):
     venue = models.CharField(max_length=100)
     title = models.CharField(max_length=50)
     url = models.URLField(help_text='The Meetup URL')
+    current_demo = models.ForeignKey('Demo', related_name='presenting_events', null=True)
 
 
 class Demo(models.Model):
@@ -16,7 +17,6 @@ class Demo(models.Model):
     email = models.EmailField()
     twitter = models.CharField(max_length=15, blank=True)
     url = models.URLField(blank=True)
-    is_presenting = models.BooleanField(help_text='Whether the demo is currently presenting')
 
 
 class Comment(models.Model):
