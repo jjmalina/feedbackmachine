@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block assets %}
-<script type='text/javascript' src='{{ STATIC_URL }}/js/index.js'></script>
+<script type='text/javascript' src='{{ STATIC_URL }}js/index.js'></script>
 {% endblock %}
 
 {% block content %}
@@ -25,24 +25,14 @@
     <li class='list-divider'>
       All Demos
     </li>
+    {% for demo in demos %}
     <li>
-      <a href='demo' data-transition='slide-in'>
-        <strong>Demo 1</strong>
+      <a href='demo/{{ demo.id }}/' data-transition='slide-in'>
+        <strong>{{ demo.presenter }}</strong>
         <span class='chevron'></span>
       </a>
     </li>
-    <li>
-      <a href='demo' data-transition='slide-in'>
-        <strong>Demo 2</strong>
-        <span class='chevron'></span>
-      </a>
-    </li>
-    <li>
-      <a href='demo' data-transition='slide-in'>
-        <strong>Ratchet on Twitter</strong>
-        <span class='chevron'></span>
-      </a>
-    </li>
+    {% endfor %}
   </ul>
 
 </div>

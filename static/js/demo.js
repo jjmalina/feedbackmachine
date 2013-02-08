@@ -15,7 +15,7 @@ function serialize_form($form) {
 function post_comment(demo_id, content) {
   $.ajax({
     type: 'POST',
-    url: '/api/v1/comment/?format=json',
+    url: '/api/v1/comments/?format=json',
     data: JSON.stringify({
       demo_id: demo_id,
       content: content
@@ -39,7 +39,8 @@ function create_comment(e) {
 
 function listen_create_comment() {
   $('#comment_create').submit(create_comment);
-  $('#comment_submit').click(create_comment);
+  // $('#comment_submit').click(create_comment);
+  $('#comment_submit').on('touchend', create_comment);
 }
 
 $(function() {

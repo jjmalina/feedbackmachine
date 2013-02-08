@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'app.views.index', name='index'),
     url(r'^home$', 'app.views.index', name='index'),
-    url(r'^demo$', 'app.views.demo', name='demo'),
+    url(r'^demo/(\d+)/$', 'app.views.demo', name='demo'),
 
     # url(r'^feedbackmachine/', include('feedbackmachine.foo.urls')),
 

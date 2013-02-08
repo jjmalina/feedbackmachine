@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block assets %}
-<script type='text/javascript' src='{{ STATIC_URL }}/js/demo.js'></script>
+<script type='text/javascript' src='{{ STATIC_URL }}js/demo.js'></script>
 {% endblock %}
 
 {% block content %}
@@ -24,14 +24,17 @@
       <img class='media-object' src='http://placehold.it/64x64' />
     </div>
     <div class='media-body'>
-      <h4 class='media-heading'>Jeremiah Malina</h4>
-      <p>IRC bot for #Tech@NYU chat room</p>
+      <h4 class='media-heading'>{{ demo.presenter }}</h4>
+      <p>
+        {{ demo.email }}<br />
+        @<a href='http://twitter.com/{{ demo.twitter }}'>{{ demo.twitter }}</a>
+      </p>
     </div>
   </div>
 
   <div class='content-padded'>
     <p class='demo-description'>
-      I worked super hard on this to get it ready for demodays
+      {{ demo.url }}
     </p>
   </div>
 
