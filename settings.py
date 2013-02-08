@@ -1,4 +1,18 @@
-# Django settings for feedbackmachine project.
+import os
+import sys
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
+# Get the Heroku config var for SERVER_CONFIG, if it's not present, then local
+# https://devcenter.heroku.com/articles/config-vars
+SERVER_CONFIG = os.environ.get('SERVER_CONFIG', 'local')
+
+PROJECT_ROOT = os.path.dirname(__file__)
+DEBUG = True if SERVER_CONFIG != 'prod' else False
+
+TEMPLATE_DEBUG = DEBUG
+
+for path in ('vendor','utils'):
+    sys.path.insert(0, os.path.join(PROJECT_ROOT, path))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,9 +25,9 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'feedbackmachine',                      # Or path to database file if using sqlite3.
+        'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
@@ -66,7 +80,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    PROJECT_ROOT + '/static/',
 )
 
 # List of finder classes that know how to find static files in
@@ -97,15 +111,16 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'feedbackmachine.urls'
+ROOT_URLCONF = 'urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'feedbackmachine.wsgi.application'
+# WSGI_APPLICATION = 'feedbackmachine.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    PROJECT_ROOT + '/templates',
 )
 
 INSTALLED_APPS = (
