@@ -16,6 +16,7 @@ class Demo(models.Model):
     email = models.EmailField()
     twitter = models.CharField(max_length=15, blank=True)
     url = models.URLField(blank=True)
+    is_presenting = models.BooleanField(help_text='Whether the demo is currently presenting')
 
 
 class Comment(models.Model):
