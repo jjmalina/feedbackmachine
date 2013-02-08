@@ -1,35 +1,49 @@
 function serialize_form($form) {
-  $form.find('[name]').each(function(el, i) {
+
+  var data = {};
+
+  $form.find('[name]').each(function(i, el) {
     var name = $(el).attr('name'),
         value = $(el).val();
     data[name] = value;
   });
+
   return data;
+
 }
 
-function post_comment(demo_id, text) {
+function post_comment(demo_id, content) {
   $.ajax({
-    url: '/demos/' + demo_id + '/comments',
-    data: { text: text },
+    type: 'POST',
+    url: '/api/v1/comment/?format=json',
+    data: JSON.stringify({
+      demo_id: demo_id,
+      content: content
+    }),
+    dataType: 'json',
+    contentType: 'application/json',
     complete: function(resp) {
       console.log('complete', resp);
     }
   })
 }
 
-function listen_submit_comment() {
-  $('#comment_submit').submit(function(e) {
+function create_comment(e) {
+  e.preventDefault();
 
-    var $form = $(e.target),
-        data = serialize_form($form);
+  var $form = $('#comment_create'),
+      data = serialize_form($form);
 
-    post_comment(data.demo_id, demo.text);
+  post_comment(data.demo_id, data.content);
+}
 
-  });
+function listen_create_comment() {
+  $('#comment_create').submit(create_comment);
+  $('#comment_submit').click(create_comment);
 }
 
 $(function() {
 
-  listen_submit_comment();
+  listen_create_comment();
 
 });

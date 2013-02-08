@@ -36,10 +36,10 @@
   </div>
 
   <div class='content-padded'>
-    <form id='comment_submit'>
+    <form id='comment_create'>
       <input type='hidden' name='demo_id' value='{{ demo.id }}' />
-      <textarea name='text' rows='5'></textarea>
-      <button type='submit' class='button button-block'>
+      <textarea name='content' rows='5'></textarea>
+      <button type='submit' class='button button-block' id='comment_submit'>
         Submit feedback
       </button>
     </form>
