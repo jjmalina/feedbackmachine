@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
 from models import *
 
@@ -16,6 +17,7 @@ def current_demo(request, event_id):
     return HttpResponse(current_demo_json)
 
 @csrf_exempt
+@require_POST
 def create_comment(request, demo_id):
     comment = Comment(demo_id=demo_id, content=request.POST.get('content'))
     comment.save()
