@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block assets %}
+<script type='text/javascript' src='{{ STATIC_URL }}/js/demo.js'></script>
+{% endblock %}
+
+{% block content %}
+
+<header class='bar-title'>
+  <a class='button-prev' href='#'>Previous</a>
+  <ul class='segmented-controller'>
+    <li>
+      <a href='/home' data-transition='slide-out'>All demos</a>
+    </li>
+  </ul>
+  <a class='button-next' href='#'>Next</a>
+</header>
+
+<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+<div class='content'>
+
+  <div class='media content-padded'>
+    <div class='pull-left'>
+      <img class='media-object' src='http://placehold.it/64x64' />
+    </div>
+    <div class='media-body'>
+      <h4 class='media-heading'>Jeremiah Malina</h4>
+      <p>IRC bot for #Tech@NYU chat room</p>
+    </div>
+  </div>
+
+  <div class='content-padded'>
+    <p class='demo-description'>
+      I worked super hard on this to get it ready for demodays
+    </p>
+  </div>
+
+  <div class='content-padded'>
+    <form id='comment_submit'>
+      <input type='hidden' name='demo_id' value='{{ demo.id }}' />
+      <textarea name='text' rows='5'></textarea>
+      <button type='submit' class='button button-block'>
+        Submit feedback
+      </button>
+    </form>
+  </div>
+
+</div>
+
+{% endblock %}
