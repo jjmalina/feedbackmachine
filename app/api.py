@@ -5,16 +5,16 @@ from app.models import Event, Demo, Comment
 class EventResource(ModelResource):
     class Meta:
         queryset = Event.objects.all()
-        resource_name = 'event'
+        resource_name = 'events'
 
 
 class DemoResource(ModelResource):
     class Meta:
         queryset = Demo.objects.all()
-        resource_name = 'demo'
+        resource_name = 'demos'
 
 
 class CommentResource(ModelResource):
     class Meta:
         queryset = Comment.objects.all()
-        resource_name = 'comment'
+        resource_name = 'comments'
