@@ -12,14 +12,31 @@ function serialize_form($form) {
 
 }
 
+function comment_submitted() {
+  $('#comment_content').val('').blur();
+  var $alert = $('#alert');
+  var $text = $('#alert-text');
+  $text.addClass('alert-success');
+  $text.html("Thanks for submitting your comment!");
+  $alert.removeClass('hide');
+}
+
+function comment_error() {
+  $('#comment_content').blur();
+  var $alert = $('#alert');
+  var $text = $('#alert-text');
+  $text.addClass('alert-error');
+  $text.html("It seems there was a problem submitting your comment :(");
+  $alert.removeClass('hide');
+}
+
 function post_comment(demo_id, content) {
   $.ajax({
     type: 'POST',
     url: '/json/demos/' + demo_id + '/comments/?format=json',
     data: { content: content },
-    complete: function(resp) {
-      console.log('complete', resp);
-    }
+    success: comment_submitted,
+    error: comment_error
   })
 }
 

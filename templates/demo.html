@@ -38,10 +38,14 @@ var bootstrap = {
     </p>
   </div>
 
+  <div class='content-padded hide' id='alert'>
+    <div class='alert' id='alert-text'></div>
+  </div>
+
   <div class='content-padded'>
     <form id='comment_create'>
       <input type='hidden' name='demo_id' value='{{ demo.id }}' />
-      <textarea name='content' rows='5'></textarea>
+      <textarea name='content' rows='5' id='comment_content'></textarea>
       <button type='submit' class='button button-block' id='comment_submit'>
         Submit feedback
       </button>
