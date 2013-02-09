@@ -1,3 +1,8 @@
+TODO
+
 
 get all the demos for the current event
 show the current demo
+make the admin interface better
+deploy to heroku
+

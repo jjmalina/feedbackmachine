@@ -16,6 +16,7 @@ def current_demo(request, event_id):
     current_demo_json = json.dumps(current_demo)
     return HttpResponse(current_demo_json)
 
+
 @csrf_exempt
 @require_POST
 def create_comment(request, demo_id):
@@ -26,7 +27,7 @@ def create_comment(request, demo_id):
         'created_at': str(comment.created_at),
         'content': comment.content
     })
-    return HttpResponse()
+    return HttpResponse(comment_json)
 
 
 def index(request):
@@ -34,6 +35,7 @@ def index(request):
     return render(request, 'index.html', {
         'current_demo': event.current_demo, 'demos': event.demos.all()
     })
+
 
 def demo(request, demo_id):
     demo = Demo.objects.get(id=demo_id)
