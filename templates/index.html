@@ -17,7 +17,7 @@
       Current Demo
     </li>
     <li>
-      <a href='demo/{{ current_demo.id }}' data-transition='slide-in'>
+      <a href='{{ current_demo.get_absolute_url }}' data-transition='slide-in'>
         <strong>{{ current_demo.presenter }}</strong>
         <span class='chevron'></span>
       </a>
@@ -27,7 +27,7 @@
     </li>
     {% for demo in demos %}
     <li>
-      <a href='demo/{{ demo.id }}/' data-transition='slide-in'>
+      <a href='{{ demo.get_absolute_url }}' data-transition='slide-in'>
         <strong>{{ demo.presenter }}</strong>
         <span class='chevron'></span>
       </a>

@@ -26,6 +26,10 @@ class Demo(models.Model):
     def __str__(self):
         return self.presenter
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('app.views.demo', [self.id])
+
 
 class Comment(models.Model):
     demo = models.ForeignKey('Demo', related_name='comments')
