@@ -1,4 +1,4 @@
-pages['/home'] = {
+pages['/'] = pages['/home'] = {
   init: function() {
     return;
   },
