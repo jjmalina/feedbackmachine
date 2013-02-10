@@ -56,6 +56,7 @@ function listen_create_comment() {
 }
 
 function poll_current_demo() {
+  var page_data = JSON.parse($('#page_data').text());
   pages['/demo'].poller = setInterval(function() {
     var event_id = page_data.event_id;
     $.ajax({

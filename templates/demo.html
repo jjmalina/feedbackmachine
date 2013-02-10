@@ -10,10 +10,10 @@
 <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
 <div class='content'>
 
-  <script type='text/javascript'>
-  var page_data = {
-    event_id: {{ event.id }},
-    demo_id: {{ demo.id }}
+  <script type='text/json' id='page_data'>
+  {
+    "event_id": {{ event.id }},
+    "demo_id": {{ demo.id }}
   }
   </script>
 
