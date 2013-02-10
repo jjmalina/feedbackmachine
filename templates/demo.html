@@ -1,17 +1,5 @@
 {% extends 'base.html' %}
 
-{% block assets %}
-<script type='text/javascript' src='{{ STATIC_URL }}js/demo.js'></script>
-{% endblock %}
-
-{% block pagespecific_js %}
-<script type='text/javascript'>
-var bootstrap = {
-  'event_id': {{ event.id }}
-}
-</script>
-{% endblock %}
-
 {% block content %}
 <header class='bar-title'>
   <a class='button-prev' href="{% url index %}" data-transition='slide-out'>All demos</a>
@@ -21,6 +9,13 @@ var bootstrap = {
 
 <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
 <div class='content'>
+
+  <script type='text/javascript'>
+  var page_data = {
+    event_id: {{ event.id }},
+    demo_id: {{ demo.id }}
+  }
+  </script>
 
   <div class='media content-padded'>
     <div class='pull-left'>

@@ -50,14 +50,14 @@ function create_comment(e) {
 }
 
 function listen_create_comment() {
-  $('#comment_create').submit(create_comment);
+  $('#comment_create').on('submit', create_comment);
   // $('#comment_submit').click(create_comment);
   $('#comment_submit').on('touchend', create_comment);
 }
 
 function poll_current_demo() {
-  setInterval(function() {
-    var event_id = bootstrap.event_id;
+  pages['/demo'].poller = setInterval(function() {
+    var event_id = page_data.event_id;
     $.ajax({
       url: '/json/events/' + event_id + '/current_demo/?format=json',
       complete: function(resp) {
@@ -68,9 +68,16 @@ function poll_current_demo() {
   }, 5000);
 }
 
-$(function() {
+pages['/demo'] = {
+  init: function() {
+    listen_create_comment();
+    poll_current_demo();
+  },
+  cleanup: function() {
+    clearInterval(this.poller);
+    $('#comment_create').off('submit');
+    $('#comment_submit').off('touchend');
+  }
+}
 
-  listen_create_comment();
-  poll_current_demo();
 
-});

@@ -15,17 +15,19 @@
 
     <link rel='stylesheet' href='{{ STATIC_URL }}css/ratchet.css' />
     <link rel='stylesheet' href='{{ STATIC_URL }}css/style.css' />
+
+    <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.2.min.js'></script>
+    <script type='text/javascript' src='{{ STATIC_URL }}js/ratchet.js'></script>
+    <script type='text/javascript' src='{{ STATIC_URL }}js/fingerblast.js'></script>
+    <script type='text/javascript' src='{{ STATIC_URL }}js/app.js'></script>
+    <script type='text/javascript' src='{{ STATIC_URL }}js/index.js'></script>
+    <script type='text/javascript' src='{{ STATIC_URL }}js/demo.js'></script>
+
+    {% block assets %}{% endblock %}
   </head>
   <body ontouchstart=''>
 
   {% block content %}{% endblock %}
 
-  <script src='http://code.jquery.com/jquery-1.7.2.min.js'></script>
-  <script src='{{ STATIC_URL }}js/ratchet.js'></script>
-  <script src='{{ STATIC_URL }}js/fingerblast.js'></script>
-  <script src='{{ STATIC_URL }}js/app.js'></script>
-
-  {% block assets %}{% endblock %}
-  {% block pagespecific_js %}{% endblock %}
   </body>
 </html>
