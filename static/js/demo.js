@@ -79,5 +79,3 @@ pages['/demo'] = {
     $('#comment_submit').off('touchend');
   }
 }
-
-
