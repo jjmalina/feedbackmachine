@@ -1,3 +1,5 @@
+var page_data = {};
+
 function serialize_form($form) {
 
   var data = {};
@@ -55,15 +57,22 @@ function listen_create_comment() {
   $('#comment_submit').on('touchend', create_comment);
 }
 
+function update_current_demo_link(demo_id) {
+  var $current_demo = $('#current_demo');
+  var on_current_demo = (demo_id == page_data.demo_id);
+  $current_demo.attr('href', '/demo/' + demo_id + '/');
+  $current_demo.toggleClass('hide', on_current_demo);
+}
+
 function poll_current_demo() {
-  var page_data = JSON.parse($('#page_data').text());
+  update_current_demo_link(page_data.current_demo_id);
   pages['/demo'].poller = setInterval(function() {
     var event_id = page_data.event_id;
     $.ajax({
       url: '/json/events/' + event_id + '/current_demo/?format=json',
       complete: function(resp) {
         var data = JSON.parse(resp.responseText);
-        $('#current_demo').attr('href', '/demo/' + data.demo_id + '/');
+        update_current_demo_link(data.demo_id);
       }
     });
   }, 5000);
@@ -71,6 +80,7 @@ function poll_current_demo() {
 
 pages['/demo'] = {
   init: function() {
+    page_data = JSON.parse($('#page_data').text());
     listen_create_comment();
     poll_current_demo();
   },

@@ -4,7 +4,9 @@
 <header class='bar-title'>
   <a class='button-prev' href="{% url index %}" data-transition='slide-out'>All demos</a>
   <h1 class='title'>{{ demo.title }}</h1>
-  <a class='button-next' href='{{ current_demo.get_absolute_url }}' data-transition='slide-in' id='current_demo'>Current Demo</a>
+  <a class='button-next hide' href='{{ current_demo.get_absolute_url }}' data-transition='slide-in' id='current_demo'>
+    Current Demo
+  </a>
 </header>
 
 <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
@@ -13,7 +15,8 @@
   <script type='text/json' id='page_data'>
   {
     "event_id": {{ event.id }},
-    "demo_id": {{ demo.id }}
+    "demo_id": {{ demo.id }},
+    "current_demo_id": {{ current_demo.id }}
   }
   </script>
 
