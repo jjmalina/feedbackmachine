@@ -5,3 +5,4 @@ wsgiref==0.1.2
 django-tastypie==0.9.11
 gunicorn==0.17.2
 dj-database-url==0.2.1
+requests==1.1.0

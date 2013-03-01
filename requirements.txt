@@ -6,3 +6,4 @@ django-tastypie==0.9.11
 gunicorn==0.17.2
 dj-database-url==0.2.1
 psycopg2==2.4.6
+requests==1.1.0

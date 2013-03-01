@@ -1,3 +1,6 @@
+import urllib
+import hashlib
+
 from django.db import models
 
 
@@ -42,6 +45,15 @@ class Demo(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('app.views.demo', [self.id])
+
+    def _get_gravatar_url(self, size):
+        default = 'http://placehold.it/64x64'
+        url = 'http://www.gravatar.com/avatar/%s?%s' % (
+            hashlib.md5(self.email.lower()).hexdigest(),
+            urllib.urlencode({'d':default, 's':str(size)}))
+        return url
+
+    avatar = property(lambda self: self._get_gravatar_url(64))
 
 
 class Comment(models.Model):
