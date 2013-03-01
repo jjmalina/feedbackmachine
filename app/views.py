@@ -32,7 +32,9 @@ def create_comment(request, demo_id):
 def index(request):
     event = Event.objects.current()
     return render(request, 'index.html', {
-        'current_demo': event.current_demo, 'demos': event.demos.all()
+        'event': event,
+        'current_demo': event.current_demo,
+        'demos': event.demos.all()
     })
 
 

@@ -17,13 +17,10 @@ v1_api.register(CommentResource())
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'app.views.index', name='index'),
-    url(r'^home$', 'app.views.index', name='index'),
-    url(r'^demo/(\d+)/$', 'app.views.demo', name='demo'),
+    url(r'^demos/(\d+)/$', 'app.views.demo', name='demo'),
 
     url(r'^json/events/(\d+)/current_demo/$', 'app.views.current_demo', name='current_demo'),
     url(r'^json/demos/(\d+)/comments/$', 'app.views.create_comment', name='create_comment'),
-
-    (r'^api/', include(v1_api.urls)),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
