@@ -23,8 +23,6 @@ urlpatterns = patterns('',
     url(r'^json/events/(\d+)/current_demo/$', 'app.views.current_demo', name='current_demo'),
     url(r'^json/demos/(\d+)/comments/$', 'app.views.create_comment', name='create_comment'),
 
-    # url(r'^feedbackmachine/', include('feedbackmachine.foo.urls')),
-
     (r'^api/', include(v1_api.urls)),
 
     # Uncomment the admin/doc line below to enable admin documentation:

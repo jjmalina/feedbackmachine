@@ -1,14 +1,27 @@
 from django.db import models
 
 
+class EventManager(models.Manager):
+    """docstring for EventManager"""
+    def current(self):
+        current_events = Event.objects.filter(
+            is_current=True).order_by('-datetime')
+        if current_events:
+            return current_events[0]
+        return None
+
+
 class Event(models.Model):
     """Model for a DemoDays event
     """
+    objects = EventManager()
     datetime = models.DateTimeField()
     venue = models.CharField(max_length=100)
     title = models.CharField(max_length=50)
     url = models.URLField(help_text='The Meetup URL')
-    current_demo = models.ForeignKey('Demo', related_name='presenting_events', null=True, blank=True)
+    current_demo = models.ForeignKey(
+        'Demo', related_name='presenting_events', null=True, blank=True)
+    is_current = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
