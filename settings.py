@@ -31,7 +31,7 @@ if 'test' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'shorty_industry'
+            'NAME': 'feedbackmachine'
         }
     }
     SOUTH_TESTS_MIGRATE = False
